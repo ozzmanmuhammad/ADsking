@@ -16,7 +16,9 @@ import { useSettingsContext } from 'src/components/settings';
 import { Main } from './main';
 import { NavMobile } from './nav-mobile';
 import { layoutClasses } from '../classes';
+
 import { NavVertical } from './nav-vertical';
+
 import { NavHorizontal } from './nav-horizontal';
 import { _account } from '../config-nav-account';
 import { Searchbar } from '../components/searchbar';

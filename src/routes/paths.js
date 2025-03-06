@@ -91,6 +91,9 @@ export const paths = {
       verify: `${ROOTS.AUTH_DEMO}/centered/verify`,
     },
   },
+  contentGeneration: {
+    cards: `${ROOTS.DASHBOARD}/user/cards`,
+  },
   // DASHBOARD
   dashboard: {
     root: ROOTS.DASHBOARD,

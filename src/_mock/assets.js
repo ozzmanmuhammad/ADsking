@@ -127,9 +127,10 @@ export const _emails = [
 // ----------------------------------------------------------------------
 
 export const _fullNames = [
-  `Jayvion Simon`,
-  `Lucian Obrien`,
-  `Deja Brady`,
+  `Post Size`,
+  `Landscape Size`,
+  `Story Size`,
+  
   `Harrison Stein`,
   `Reece Chung`,
   `Lainey Davidson`,

@@ -14,100 +14,43 @@ import { varAlpha } from 'src/theme/styles';
 import { AvatarShape } from 'src/assets/illustrations';
 import { TwitterIcon, FacebookIcon, LinkedinIcon, InstagramIcon } from 'src/assets/icons';
 
-import { Image } from 'src/components/image';
-
 // ----------------------------------------------------------------------
 
 export function UserCard({ user, sx, ...other }) {
   return (
-    <Card sx={{ textAlign: 'center', ...sx }} {...other}>
-      <Box sx={{ position: 'relative' }}>
-        <AvatarShape
-          sx={{
-            left: 0,
-            right: 0,
-            zIndex: 10,
-            mx: 'auto',
-            bottom: -26,
-            position: 'absolute',
-          }}
-        />
-
-        <Avatar
-          alt={user.name}
-          src={user.avatarUrl}
-          sx={{
-            width: 64,
-            height: 64,
-            zIndex: 11,
-            left: 0,
-            right: 0,
-            bottom: -32,
-            mx: 'auto',
-            position: 'absolute',
-          }}
-        />
-
-        <Image
-          src={user.coverUrl}
-          alt={user.coverUrl}
-          ratio="16/9"
-          slotProps={{
-            overlay: {
-              bgcolor: (theme) => varAlpha(theme.vars.palette.common.blackChannel, 0.48),
-            },
-          }}
-        />
+    <Card
+      sx={{
+        textAlign: 'center',
+        width: '100%',
+        height: 'auto',
+        transition: 'transform 0.3s ease-in-out',
+        '&:hover': {
+          transform: 'scale(1.05)',
+          boxShadow: 6,
+        },
+        ...sx,
+      }}
+      {...other}
+    >
+      <Box sx={{ position: 'relative', width: '100%', height: 180, bgcolor: 'grey.200' }}>
+        {/* Placeholder box to maintain card dimensions */}
       </Box>
-
       <ListItemText
-        sx={{ mt: 7, mb: 1 }}
+        sx={{
+          width: 80,
+          height: 80,
+          zIndex: 10,
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          color: 'black',
+        }}
         primary={user.name}
         secondary={user.role}
-        primaryTypographyProps={{ typography: 'subtitle1' }}
+        primaryTypographyProps={{ typography: 'h6' }}
         secondaryTypographyProps={{ component: 'span', mt: 0.5 }}
       />
-
-      <Stack direction="row" alignItems="center" justifyContent="center" sx={{ mb: 2.5 }}>
-        {_socials.map((social) => (
-          <IconButton key={social.label} color="inherit">
-            {social.value === 'twitter' && <TwitterIcon />}
-            {social.value === 'facebook' && <FacebookIcon />}
-            {social.value === 'instagram' && <InstagramIcon />}
-            {social.value === 'linkedin' && <LinkedinIcon />}
-          </IconButton>
-        ))}
-      </Stack>
-
-      <Divider sx={{ borderStyle: 'dashed' }} />
-
-      <Box
-        display="grid"
-        gridTemplateColumns="repeat(3, 1fr)"
-        sx={{ py: 3, typography: 'subtitle1' }}
-      >
-        <div>
-          <Typography variant="caption" component="div" sx={{ mb: 0.5, color: 'text.secondary' }}>
-            Follower
-          </Typography>
-          {fShortenNumber(user.totalFollowers)}
-        </div>
-
-        <div>
-          <Typography variant="caption" component="div" sx={{ mb: 0.5, color: 'text.secondary' }}>
-            Following
-          </Typography>
-
-          {fShortenNumber(user.totalFollowing)}
-        </div>
-
-        <div>
-          <Typography variant="caption" component="div" sx={{ mb: 0.5, color: 'text.secondary' }}>
-            Total post
-          </Typography>
-          {fShortenNumber(user.totalPosts)}
-        </div>
-      </Box>
     </Card>
   );
 }
